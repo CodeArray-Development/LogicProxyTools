@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>LogicProxyTools-bungee</artifactId>
-    <version>0.0.1</version>
+    <version>${parent.version}${BUILD_NUMBER}</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -70,7 +70,7 @@
         <dependency>
             <groupId>de.frinshhd</groupId>
             <artifactId>LogicProxyTools-core</artifactId>
-            <version>0.0.1</version>
+            <version>${parent.version}${BUILD_NUMBER}</version>
         </dependency>
     </dependencies>
 </project>

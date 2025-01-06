@@ -7,7 +7,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>LogicProxyTools-dist</artifactId>
-  <version>${project.parent.version}</version>
+  <version>${project.parent.version}${BUILD_NUMBER}</version>
   <build>
     <resources>
       <resource>

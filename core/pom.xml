@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>LogicProxyTools-core</artifactId>
-    <version>${project.parent.version}</version>
+    <version>${project.parent.version}${BUILD_NUMBER}</version>
     <packaging>jar</packaging>
 
     <properties>

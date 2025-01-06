@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>${project.parent.artifactId}-velocity</artifactId>
-  <version>${project.parent.version}</version>
+  <version>${project.parent.version}${BUILD_NUMBER}</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -166,7 +166,7 @@
     <dependency>
       <groupId>de.frinshhd</groupId>
       <artifactId>LogicProxyTools-core</artifactId>
-      <version>${project.parent.version}</version>
+      <version>${project.parent.version}${BUILD_NUMBER}</version>
     </dependency>
   </dependencies>
 </project>

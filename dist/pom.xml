@@ -21,7 +21,7 @@
 
     <build>
         <directory>../target</directory>
-        <finalName>LogicProxyTools-${project.parent.version}</finalName>
+        <finalName>LogicProxyTools-${project.parent.version}${BUILD_NUMBER}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

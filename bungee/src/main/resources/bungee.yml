@@ -1,0 +1,9 @@
+name: LogicProxyTools
+version: '${project.version}'
+main: de.frinshhd.LogicProxyTools.Bungee.BungeeMain
+author: FrinshHD
+
+commands:
+  maintenance:
+    description: "Modify the maintenance sytem"
+    usage: "/maintenance"

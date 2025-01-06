@@ -27,8 +27,7 @@ public class Maintenance {
     @DatabaseField
     private String namesList;
 
-    public Maintenance() {
-    }
+    public Maintenance() {}
 
     public void create() {
         this.items = hashMapToString(new HashMap<>());

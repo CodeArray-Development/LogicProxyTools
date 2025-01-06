@@ -2,9 +2,11 @@ maintenanceMessage: "§cThe network is currently in maintenance mode!"
 motd:
   line1: "§6§lLogic§e§lProxy§6§lTools"
   line2: "§7Your §6Network §7Management"
+  protocolText: null
 maintenanceMotd:
   line1: "§6§lLogic§e§lProxy§6§lTools"
   line2: "§7Your §6Network §7Management §cMaintenance"
+  protocolText: "§cMaintenance"
 database:
   username: "root"
   password: "12345"

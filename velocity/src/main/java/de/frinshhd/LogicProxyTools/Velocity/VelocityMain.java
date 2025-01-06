@@ -9,6 +9,7 @@ import com.velocitypowered.api.event.proxy.ProxyPingEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
+import com.velocitypowered.api.proxy.server.ServerPing;
 import de.frinshhd.LogicProxyTools.Core.Manager;
 import de.frinshhd.LogicProxyTools.Velocity.commands.MaintenanceCommand;
 import net.kyori.adventure.text.Component;
@@ -72,15 +73,23 @@ public final class VelocityMain {
 
     @Subscribe
     public void onProxyPing(ProxyPingEvent event) {
+        ServerPing.Builder builder = event.getPing().asBuilder();
+
         if (manager.isMaintenance() && manager.getConfig().getMaintenanceMotd() != null) {
-            event.setPing(event.getPing().asBuilder()
-                    .description(build(manager.getConfig().getMaintenanceMotd().getLine1() + "\n" + manager.getConfig().getMaintenanceMotd().getLine2()))
-                    .build());
+            builder.description(build(manager.getConfig().getMaintenanceMotd().getLine1() + "\n" + manager.getConfig().getMaintenanceMotd().getLine2()));
+
+            if (manager.getConfig().getMaintenanceMotd().getProtocolText() != null) {
+                builder.version(new ServerPing.Version(1, manager.getConfig().getMaintenanceMotd().getProtocolText()));
+            }
         } else if (manager.getConfig().getMotd() != null) {
-            event.setPing(event.getPing().asBuilder()
-                    .description(build(manager.getConfig().getMotd().getLine1() + "\n" + manager.getConfig().getMotd().getLine2()))
-                    .build());
+            builder.description(build(manager.getConfig().getMotd().getLine1() + "\n" + manager.getConfig().getMotd().getLine2()));
+
+            if (manager.getConfig().getMotd().getProtocolText() != null) {
+                builder.version(new ServerPing.Version(1, manager.getConfig().getMotd().getProtocolText()));
+            }
         }
+
+        event.setPing(builder.build());
     }
 
     /**

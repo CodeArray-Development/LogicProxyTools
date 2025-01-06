@@ -76,8 +76,8 @@ class MinecraftClient:
 
 if __name__ == "__main__":
     async def run():
-        shutil.copyfile("./target/LogicProxyTools-0.0.1.jar",
-                                    "./server/plugins/LogicProxyTools.jar")
+        #shutil.copyfile("./target/LogicProxyTools-0.0.1.jar",
+        #                            "./server/plugins/LogicProxyTools.jar")
         shutil.copyfile("./target/LogicProxyTools-0.0.1.jar",
                                             "./serverVelocity/plugins/LogicProxyTools.jar")
 

@@ -87,6 +87,7 @@ public class Manager {
             try {
                 Dao<Maintenance, Integer> maintenanceDao = MysqlManager.getMaintenanceDao();
                 Maintenance maintenance = new Maintenance();
+                maintenance.create();
                 maintenanceDao.create(maintenance);
             } catch (SQLException e) {
                 throw new RuntimeException("Failed to initialize maintenance", e);

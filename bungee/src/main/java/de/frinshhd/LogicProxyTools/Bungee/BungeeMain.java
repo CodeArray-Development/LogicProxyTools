@@ -3,6 +3,7 @@ package de.frinshhd.LogicProxyTools.Bungee;
 import de.frinshhd.LogicProxyTools.Bungee.commands.MaintenanceCommand;
 import de.frinshhd.LogicProxyTools.Core.Manager;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.PostLoginEvent;
@@ -68,12 +69,20 @@ public final class BungeeMain extends Plugin implements Listener {
     public void onProxyPing(ProxyPingEvent event) {
         if (getManager().isMaintenance() && getManager().getConfig().getMaintenanceMotd() != null) {
             event.getResponse().setDescriptionComponent(new TextComponent(build(getManager().getConfig().getMaintenanceMotd().getLine1() + "\n" + getManager().getConfig().getMaintenanceMotd().getLine2())));
+
+            if (getManager().getConfig().getMaintenanceMotd().getProtocolText() != null) {
+                event.getResponse().setVersion(new ServerPing.Protocol(getManager().getConfig().getMaintenanceMotd().getProtocolText(), 1   ));
+            }
+
             return;
         }
 
         if (getManager().getConfig().getMotd() != null) {
             event.getResponse().setDescriptionComponent(new TextComponent(build(getManager().getConfig().getMotd().getLine1() + "\n" + getManager().getConfig().getMotd().getLine2())));
-            return;
+
+            if (getManager().getConfig().getMotd().getProtocolText() != null) {
+                event.getResponse().setVersion(new ServerPing.Protocol(getManager().getConfig().getMotd().getProtocolText(), 1));
+            }
         }
     }
 }

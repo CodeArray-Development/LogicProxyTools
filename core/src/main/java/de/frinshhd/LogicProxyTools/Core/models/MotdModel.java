@@ -10,11 +10,18 @@ public class MotdModel {
     @JsonProperty
     private String line2 = "§7Your §6Network §7Management";
 
+    @JsonProperty
+    private String protocolText = null;
+
     public String getLine1() {
         return line1;
     }
 
     public String getLine2() {
         return line2;
+    }
+
+    public String getProtocolText() {
+        return protocolText;
     }
 }

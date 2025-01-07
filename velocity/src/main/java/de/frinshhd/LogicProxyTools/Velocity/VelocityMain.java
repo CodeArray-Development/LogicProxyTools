@@ -99,6 +99,21 @@ public final class VelocityMain {
      * @return the formatted Component
      */
     public static Component build(String string) {
-        return Component.text(string.replace('&', '§'));
+        return Component.text(hexToMinecraftColor(string).replace('&', '§'));
+    }
+
+    private static String hexToMinecraftColor(String hex) {
+        // Remove the &# symbol if present
+        if (hex.startsWith("&#")) {
+            hex = hex.substring(2);
+        }
+
+        // Ensure the string is 6 characters long
+        if (hex.length() == 6) {
+            return "§x" + hex.chars()
+                    .mapToObj(c -> "§" + Integer.toHexString(c).toLowerCase())
+                    .reduce("", String::concat);
+        }
+        return hex; // Return the original if not valid
     }
 }

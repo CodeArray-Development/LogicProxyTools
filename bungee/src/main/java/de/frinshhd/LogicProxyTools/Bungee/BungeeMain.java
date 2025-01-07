@@ -44,7 +44,20 @@ public final class BungeeMain extends Plugin implements Listener {
     }
 
     public static String build(String string) {
-        return ChatColor.translateAlternateColorCodes('&', string);
+        return ChatColor.translateAlternateColorCodes('&', hexToMinecraftColor(string));
+    }
+
+    private static String hexToMinecraftColor(String hex) {
+        if (hex.startsWith("&#")) {
+            hex = hex.substring(2);
+        }
+
+        if (hex.length() == 6) {
+            return "§x" + hex.chars()
+                    .mapToObj(c -> "§" + Integer.toHexString(c).toLowerCase())
+                    .reduce("", String::concat);
+        }
+        return hex;
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
